@@ -17,3 +17,22 @@ class User(db.Model):
             "email": self.email,
             # do not serialize the password, its a security breach
         }
+
+class People(db.Model):
+    uid = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120), unique=True, nullable=False)
+    gender = db.Column(db.String(80), unique=False, nullable=True)
+    height = db.Column(db.Integer, unique=False, nullable=False)
+    mass = db.Column(db.Float, unique=False, nullable=False)
+    
+
+
+    def serialize(self):
+        return {
+            "uid": self.uid,
+            "name": self.name,
+            "gender":self.gender,
+            "height":self.height,
+            "mass":self.mass,
+            # do not serialize the password, its a security breach
+        }

@@ -39,6 +39,14 @@ def handle_hello():
 
     return jsonify(response_body), 200
 
+@app.route("/people", methods=["GET"])
+def getPeople():
+    return jsonify({"mensaje":"aki van tus personajes"})
+
+@app.route("/people/<int:people_id>", methods=["GET"])
+def getPeopleID(people_id):
+    return jsonify({"id personajes":people_id})
+
 # this only runs if `$ python src/main.py` is executed
 if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 3000))
